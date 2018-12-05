@@ -219,4 +219,38 @@ class ListsTest extends FunSuite {
   test("Drop every 2nd element from List(1)") {
     assert(drop(List(1), 2) == List(1))
   }
+
+
+  // split a list into two parts
+  test("Split an empty list and N = 0") {
+    assert(split(List(), 0) == (List(), List()))
+  }
+
+  test("Split an empty list and N = 1") {
+    assert(split(List(), 0) == (List(), List()))
+  }
+
+  test("Split a list with one element and N = 0") {
+    assert(split(List(1), 0) == (List(), List(1)))
+  }
+
+  test("Split a list with one element and N = 1") {
+    assert(split(List(1), 1) == (List(1), List()))
+  }
+
+  test("Split a list with more than one elements") {
+    assert(split(List(1, 2, 3, 4), 2) == (List(1, 2), List(3, 4)))
+  }
+
+  test("Split a list with more than one elements and N = 0") {
+    assert(split(List(1, 2, 3), 0) == (List(), List(1, 2, 3)))
+  }
+
+  test("Split a list with more than one elements and N = length of the list") {
+    assert(split(List(1, 2, 3), 3) == (List(1, 2, 3), List()))
+  }
+
+
+  // extract a slice from a list
+
 }

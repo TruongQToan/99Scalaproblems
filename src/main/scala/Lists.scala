@@ -97,4 +97,23 @@ object Lists {
     helper(xs, oldN)
   }
 
+  def split[T](xs: List[T], N: Int): (List[T], List[T]) = {
+    def helper(xs: List[T], res: List[T], N: Int): (List[T], List[T]) = xs match {
+      case Nil => (reverseList(res), Nil)
+      case x :: ys =>
+        if (N == 0) (reverseList(res), x :: ys)
+        else helper(ys, x :: res, N - 1)
+    }
+    helper(xs, List(), N)
+  }
+
+  def slice[T](xs: List[T], from: Int, end: Int): List[T] = {
+    def helper(xs: List[T], res: List[T], k: Int): List[T] = xs match {
+      case Nil => reverseList(res)
+      case x :: ys =>
+        if (k >= from && k < end) helper(ys, x :: res, k + 1)
+        else helper(ys, res, k + 1)
+    }
+    helper(xs, List(), 0)
+  }
 }
